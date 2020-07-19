@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+// API Key: 8093870b1d5bc24fb2f7368b79e14351
 
 function App() {
   return (
