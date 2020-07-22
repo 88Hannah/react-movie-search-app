@@ -1,31 +1,36 @@
 import React, {useState} from 'react';
-import MovieCard from './MovieCard';
+import Error from './Error';
+import Results from './Results';
 
 function SearchMovies() {
 
     const [query, setQuery] = useState('');
+    const [currentSearch, setCurrentSearch] = useState('');
     const [movies, setMovies] = useState([]);
-
+    const [hasErrored, setHasErrored] = useState(false);
+    const [hasSearched, setHasSearched] = useState(false);
 
     const searchMovies = async event => {
-        event.preventDefault()
-
+        event.preventDefault();
+                
         const url = `https://api.themoviedb.org/3/search/movie?api_key=8093870b1d5bc24fb2f7368b79e14351&language=en&query=${query}&page=1&include_adult=false`;
-
+        
         try {
             const response = await fetch(url);
             const data = await response.json();
             setMovies(data.results);
+            
         } catch(error) {
-            console.log(error)
+            setHasErrored(true);
         }
-    }
 
+        setCurrentSearch(query);
+        setHasSearched(true);
+    }
 
     return (
         <>
             <form className="form" onSubmit={searchMovies}>
-                <label htmlFor="query" className="label">Movie Name</label>
                 <input 
                     className="input" 
                     type="text" 
@@ -37,14 +42,16 @@ function SearchMovies() {
                 <button className="button" type="submit">Search</button>
             </form>
 
-            <div className="card-list">
-                {movies.filter(movie => movie.poster_path).map(movie => ( 
-                    <MovieCard movie={movie}  key={movie.id}/>
-                ))}
-            </div>
+            { hasSearched && 
+                (
+                    hasErrored ? 
+                    <Error /> : 
+                    <Results movies={movies.filter(movie => movie.poster_path)} search={currentSearch}/>
+                )
+            }
         </>
     )
 
 }
 
-export default SearchMovies
+export default SearchMovies;
