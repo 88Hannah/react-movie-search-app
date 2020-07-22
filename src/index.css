@@ -1,3 +1,4 @@
+/* General */
 * {
   box-sizing: border-box;
 }
@@ -8,30 +9,39 @@ body {
   background-color: hsl(0, 0%, 93%);
   color: #333;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-small {
-  font-size: 0.75rem;
+  position: relative;
+  min-height: 100vh;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1000px;
-  padding: 40px;
+  width: min(1000px, 90%);
+  
 }
 
-.title {
-  font-size: 2.75rem;
+/* Header */
+.header__text {
   text-align: center;
+  padding: 3em 0;
 }
 
+.header__text--title {
+  font-size: 2.75rem;
+  margin: 0;
+}
+
+.header__text--subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  color: rgba(0,0,0,0.35);
+}
+
+/* Search Form */
 .form {
   display: grid;
-}
-
-.label {
-  margin-bottom: 0.2rem;
-  text-transform: uppercase;
+  width: min(90%, 700px);
+  margin: 0 auto;
 }
 
 .input {
@@ -59,7 +69,7 @@ small {
 
 @media (min-width: 786px) {
   .form {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     gap: 1rem;
     align-items: center;
   }
@@ -69,8 +79,26 @@ small {
   }
 }
 
-.card-list {
-  margin-top: 4rem;
+/* Results */
+.results {
+  padding: 2em 0 4em;
+}
+
+.no-results,
+.error {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 1.4em;
+  line-height: 2em;
+}
+
+.results-text {
+  padding-left: 1em;
+}
+
+.search-query {
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .card {
@@ -89,4 +117,40 @@ small {
 .card__img {
   margin: 0 auto;
   display: block;
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+
+@media (min-width: 786px) {
+
+  .card {
+    display: flex;
+    align-items: center;
+  }
+
+  .card__content {
+    margin-left: 3em;
+  }
+
+  .card__title {
+    margin-top: 0.5rem;
+  }
+
+}
+
+/* Footer */
+.footer {
+  background-color: tan;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.logo {
+  width: 200px;
+  padding: 10px 30px;
 }

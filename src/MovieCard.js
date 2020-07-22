@@ -2,7 +2,6 @@ import React from 'react';
 
 function MovieCard(props) {
 
-
     return (
         <>
             <div className="card">
@@ -19,9 +18,8 @@ function MovieCard(props) {
                 </div> 
             </div>
         </>
-
     )
-
+    
 }
 
-export default MovieCard
+export default MovieCard;
