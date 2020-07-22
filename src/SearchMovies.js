@@ -35,7 +35,7 @@ function SearchMovies() {
                     className="input" 
                     type="text" 
                     name="query" 
-                    placeholder="Search here ..."
+                    placeholder="Search for a movie here ..."
                     value={query}
                     onChange={event => setQuery(event.target.value)}
                 ></input>    

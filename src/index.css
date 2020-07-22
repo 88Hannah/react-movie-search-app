@@ -131,8 +131,13 @@ small {
     align-items: center;
   }
 
+  .card__img {
+    width: 20%; 
+  }
+
   .card__content {
     margin-left: 3em;
+    width: 80%;
   }
 
   .card__title {
